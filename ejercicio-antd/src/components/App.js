@@ -5,12 +5,14 @@ import ListMovies from './ListMovies';
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [element, setElement] = useState("avengers");
+  const [element, setElement] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-      const getData = async () => {
+    const getData = async () => {
+      if(search!==""){
         const response = await fetch(
-          `https://www.omdbapi.com/?i=tt3896198&apikey=e23801d0&s=${element}`
+          `https://www.omdbapi.com/?i=tt3896198&apikey=e23801d0&s=${search}`
         );
         const data = await response.json();
         console.log("Data", data);
@@ -18,18 +20,23 @@ function App() {
         console.log("Search",results);
         setMovies( data.Search);
         console.log("SetMovies",movies);
-      };
+      }
+    };
+
     getData();
 
-  }, [element]);
+  }, [search]);
+
   
-  const onSearch = () =>{
-    setElement(document.querySelector("#movie").value);
+  
+  const onSearch = (value) =>{
+    
+    setSearch(value);
     console.log("movie",element);
-    document.querySelector("#movie").value="";
+    setElement("");
   }
 
-  const search = {
+  const searchStyle = {
     display: 'inline-flex', 
     justifyContent: 'center', 
     alignItems: 'center'
@@ -38,12 +45,12 @@ function App() {
   return (
     <>
     <Row>
-      <Col span={24} style={search}>
-        <Input.Search id="movie" placeholder="Ingrese frase o palabra: "  enterButton onSearch={onSearch} onPressEnter={onSearch} style={{width:250}}/>
+      <Col span={24} style={searchStyle}>
+        <Input.Search id="movie" placeholder="Ingrese frase o palabra: " value={element} defaultValue={element} onChange={(e)=>{console.log('e', e.target.value );setElement(e.target.value)}} enterButton onSearch={onSearch} onPressEnter={onSearch} style={{width:250}}/>
       </Col>
     </Row>
     <br></br>
-    {element !="" ? <ListMovies movies={movies}/>: ("NO HAY RESULTADOS")}
+    {movies.length > 0 ? <ListMovies movies={movies}/>: ("NO HAY RESULTADOS")}
     </>
   );
 }
