@@ -21,15 +21,14 @@ body{
     background-color: #222a3a;
 }
 
-.ant-card-meta-title{
+.ant-card-meta-description,.ant-card-meta-title,.ant-result-title,.ant-result-subtitle,.ant-comment-content-author,.ant-comment-content-author-name,.ant-comment-content-detail,.ant-list-header{
     color: cornsilk;
 }
-
-.ant-card-meta-description{
-    color: cornsilk;
+.ant-result {
+    padding: 7% 32px;
 }
-
 .ant-modal-title{
     color: cornsilk;
     font-weight: 900;
 }
+

@@ -2,6 +2,8 @@ import '../styles/App.css';
 import {useState, useEffect } from "react";
 import {Input,Col,Row} from 'antd';
 import ListMovies from './ListMovies';
+import NotFound from './NotFound';
+import Comments from './Comments';
 
 
 function App() {
@@ -50,7 +52,7 @@ function App() {
       </Col>
     </Row>
     <br></br>
-    {movies ? <ListMovies movies={movies}/>: ("NO HAY RESULTADOS PARA MOSTRAR")}
+    {movies ? <ListMovies movies={movies}/>: <NotFound></NotFound>}
     </>
   );
 }
