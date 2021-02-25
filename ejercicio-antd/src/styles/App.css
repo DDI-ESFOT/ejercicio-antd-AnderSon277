@@ -1,1 +1,35 @@
 @import '~antd/dist/antd.css';
+
+body{
+    background-color:#2b3448;
+}
+
+.ant-modal-content{
+    background-color: #222a3a;
+    color: cornsilk;
+}
+.ant-modal-header{
+    background-color: #222a3a;
+}
+
+.ant-card{
+    background-color: #222a3a;
+    margin-bottom: 8%;
+}
+
+.ant-card-actions{
+    background-color: #222a3a;
+}
+
+.ant-card-meta-title{
+    color: cornsilk;
+}
+
+.ant-card-meta-description{
+    color: cornsilk;
+}
+
+.ant-modal-title{
+    color: cornsilk;
+    font-weight: 900;
+}
